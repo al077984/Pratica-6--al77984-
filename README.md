@@ -1,18 +1,24 @@
 ## Pratica-6--al77984
 
-🏗️ Análisis de Vigas Compuestas
+ 
+## 🏗️ Análisis de Vigas Compuestas
 
 Este proyecto es un simulador simplificado de vigas compuestas. Permite calcular el momento máximo y los esfuerzos en la fibra superior e inferior para diferentes tipos de secciones.
 
-📂 Estructura del proyecto
+## 📂 Estructura del proyecto
 viga_compuesta/
 │
+
 ├── main.py          # Programa principal, interacción con usuario
+
 ├── calculos.py      # Funciones de cálculo (momento, esfuerzo)
+
 ├── secciones.py     # Datos de secciones y materiales
+
 └── utils.py         # Funciones auxiliares y validaciones
 
-⚙️ Funcionalidades
+
+## ⚙️ Funcionalidades
 
 🏋️ Calcular el momento máximo para una viga simplemente apoyada con carga distribuida.
 
