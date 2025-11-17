@@ -1,4 +1,4 @@
-## Pratica-6--al77984
+## Pratica-6-al77984
 
  
 ## 🏗️ Análisis de Vigas Compuestas
