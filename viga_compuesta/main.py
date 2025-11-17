@@ -1,10 +1,25 @@
-def obtener_seccion(seccion):
-    """Devuelve inercia equivalente, módulos de elasticidad y distancias a fibras."""
-    secciones = {
-        "acero-hormigon": {"I_eq": 0.002, "Es": 200000, "Ec": 25000, "y_sup": 0.3, "y_inf": 0.3},
-        "hormigon_simple": {"I_eq": 0.0015, "Es": 0, "Ec": 25000, "y_sup": 0.25, "y_inf": 0.25},
-        "acero": {"I_eq": 0.001, "Es": 200000, "Ec": 0, "y_sup": 0.2, "y_inf": 0.2}
-    }
-    if seccion not in secciones:
-        raise ValueError("Sección no definida. Elija: acero-hormigon, hormigon_simple, acero")
-    return secciones[seccion]
+from secciones import obtener_seccion
+from calculos import calcular_momento_max, esfuerzo_maximo
+from utils import validar_positivo
+
+def main():
+    print("=== Análisis simplificado de viga compuesta ===")
+    try:
+        L = validar_positivo(float(input("Ingrese la longitud de la viga L (m): ")), "Longitud L")
+        q = validar_positivo(float(input("Ingrese la carga distribuida q (kN/m): ")), "Carga q")
+        seccion = input("Ingrese tipo de sección (acero-hormigon / hormigon_simple / acero): ").strip().lower()
+
+        datos = obtener_seccion(seccion)
+        M_max = calcular_momento_max(q, L)
+        sigma_sup = esfuerzo_maximo(M_max, datos["I_eq"], datos["y_sup"])
+        sigma_inf = esfuerzo_maximo(M_max, datos["I_eq"], datos["y_inf"])
+
+        print(f"\nMomento máximo M_max: {M_max:.2f} kN·m")
+        print(f"Esfuerzo máximo en fibra superior: {sigma_sup:.2f} MPa")
+        print(f"Esfuerzo máximo en fibra inferior: {sigma_inf:.2f} MPa")
+
+    except ValueError as e:
+        print(f"Error: {e}")
+
+if __name__ == "__main__":
+    main()
