@@ -5,6 +5,8 @@
 
 Este proyecto es un simulador simplificado de vigas compuestas. Permite calcular el momento máximo y los esfuerzos en la fibra superior e inferior para diferentes tipos de secciones.
 
+
+
 ## 📂 Estructura del proyecto
 viga_compuesta/
 │
@@ -16,6 +18,7 @@ viga_compuesta/
 ├── secciones.py     # Datos de secciones y materiales
 
 └── utils.py         # Funciones auxiliares y validaciones
+
 
 
 ## ⚙️ Funcionalidades
